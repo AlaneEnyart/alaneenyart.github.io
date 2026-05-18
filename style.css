@@ -129,13 +129,18 @@ body {
   margin-bottom: 50px;
 }
 
-.gallery-grid {
-  display: grid;
+.gallery-choice-grid {
 
-  grid-template-columns:
-  repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
 
-  gap: 28px;
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 60px;
+
+  flex-wrap: nowrap;
+
 }
 
 .gallery-grid img {
