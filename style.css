@@ -225,12 +225,16 @@ footer {
 }
 
 .gallery-folder img {
-  width: 100%;
+  width: 420px;
+
   height: 420px;
+
   object-fit: cover;
+
   display: block;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  
 }
 
 .gallery-folder:hover {
@@ -238,12 +242,5 @@ footer {
   opacity: 0.96;
 }
 
-.folder-label {
-  text-align: center;
-  margin-top: 18px;
-
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-}
  
 }
