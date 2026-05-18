@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alane Art | Home</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- MENU BUTTON -->
+<div class="menu-button" onclick="openMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+
+  <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+
+</div>
+
+<!-- HERO -->
+<section class="hero"></section>
+
+<section class="hero-text-below">
+
+  <h1>ALANE ENYART: ART FROM THE HEART</h1>
+
+  <p>
+    Abstract paintings inspired by flowing color,
+    memory, silence, and organic movement.
+  </p>
+
+</section>
+
+<footer>
+  © 2026 Alane Art
+</footer>
+
+<script>
+function openMenu() {
+  document.getElementById("sidebar").style.width = "260px";
+}
+function closeMenu() {
+  document.getElementById("sidebar").style.width = "0";
+}
+</script>
+
+</body>
+</html>
