@@ -225,8 +225,7 @@ footer {
 }
 
 .gallery-folder img {
-  width: 420px;
-
+  
   height: 420px;
 
   object-fit: cover;
@@ -236,6 +235,18 @@ footer {
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   
 }
+
+/* SOLD IMAGE */
+
+.gallery-folder.sold img {
+  width: 320px;
+}
+
+/* UNSOLD IMAGE */
+
+.gallery-folder.unsold img {
+  width: 640px;
+}  
 
 .gallery-folder:hover {
   transform: translateY(-6px);
