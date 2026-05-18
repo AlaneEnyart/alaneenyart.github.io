@@ -5,56 +5,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alane Art | Gallery</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- MENU BUTTON -->
+
 <div class="menu-button" onclick="openMenu()">
-  <span></span><span></span><span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 </div>
 
+<!-- SIDEBAR -->
+
 <div id="sidebar" class="sidebar">
+
   <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="gallery.html">Gallery</a>
   <a href="contact.html">Contact</a>
+
 </div>
 
-<section class="gallery-section">
+<!-- GALLERY CHOICE -->
+
+<section class="gallery-choice-section">
 
   <h2>Gallery</h2>
 
-  <!-- NOT SOLD -->
-  <h3 class="gallery-subtitle">Not SOLD yet</h3>
+  <div class="gallery-choice-grid">
 
-  <div class="gallery-grid">
+    <!-- SOLD -->
 
-    <img src="images/painting1.jpg" alt="">
-    <img src="images/painting2.jpg" alt="">
-    <img src="images/painting3.jpg" alt="">
+    <a href="sold.html" class="gallery-folder">
 
-  </div>
+      <img src="images/sold.jpg" alt="Sold paintings">
 
-  <!-- SOLD -->
-  <h3 class="gallery-subtitle sold">SOLD</h3>
+      <div class="folder-label">
+        SOLD
+      </div>
 
-  <div class="gallery-grid sold-grid">
+    </a>
 
-    <img src="images/painting4.jpg" alt="">
-    <img src="images/painting5.jpg" alt="">
-    <img src="images/painting6.jpg" alt="">
+    <!-- UNSOLD -->
+
+    <a href="unsold.html" class="gallery-folder">
+
+      <img src="images/unsold.jpg" alt="Available paintings">
+
+      <div class="folder-label">
+        NOT SOLD YET
+      </div>
+
+    </a>
 
   </div>
 
 </section>
 
-<footer>© 2026 Alane Art</footer>
+<footer>
+  © 2026 Alane Art
+</footer>
 
 <script>
-function openMenu(){document.getElementById("sidebar").style.width="260px";}
-function closeMenu(){document.getElementById("sidebar").style.width="0";}
+
+function openMenu() {
+  document.getElementById("sidebar").style.width = "260px";
+}
+
+function closeMenu() {
+  document.getElementById("sidebar").style.width = "0";
+}
+
 </script>
 
 </body>
