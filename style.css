@@ -225,15 +225,16 @@ footer {
 }
 
 .gallery-folder img {
-  
-  height: 420px;
-
-  object-fit: cover;
 
   display: block;
 
+  height: 420px;
+
+  width: auto;
+
+  object-fit: cover;
+
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  
 }
 
 /* SOLD IMAGE */
