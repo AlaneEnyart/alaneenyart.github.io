@@ -25,13 +25,13 @@ body {
 
 /* MENU BUTTON */
 
-.menu-button {
+/*.menu-button {
   position: fixed;
   top: 28px;
   left: 28px;
   z-index: 1001;
   cursor: pointer;
-}
+
 
 .menu-button span {
   display: block;
@@ -39,6 +39,47 @@ body {
   height: 2px;
   background: #222;
   margin: 5px 0;
+}*/
+
+.menu-button {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 4px;
+
+  background: rgba(236,231,223,0.88);
+
+  backdrop-filter: blur(6px);
+
+  border-radius: 50%;
+
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+
+  z-index: 1001;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.menu-button span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #222;
+}
+
+.menu-button:hover {
+  transform: scale(1.05);
 }
 
 /* SIDEBAR */
