@@ -153,7 +153,7 @@ body {
 
   align-items: center;
 
-  gap: 8px;
+  gap: 20px;
   /*padding-left: 40px;*/
   flex-wrap: nowrap;
 
@@ -225,7 +225,7 @@ footer {
   font-weight: normal;
   margin-bottom: 60px;
   text-align: left;
-  margin-left: 70px; /*-----------
+  margin-left: 90px; /*-----------
 }
 
 /*.gallery-choice-grid {--------------------------
