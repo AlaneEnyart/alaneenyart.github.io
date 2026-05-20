@@ -153,8 +153,8 @@ body {
 
   align-items: center;
 
-  gap: 60px;
-
+  gap: 20px;
+  padding-left: 40px;
   flex-wrap: nowrap;
 
 }
@@ -227,13 +227,13 @@ footer {
   text-align: left;
 }
 
-.gallery-choice-grid {
+/*.gallery-choice-grid {--------------------------
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
   padding-left: 40px;
   align-items: start;
-}
+}*/
 
 .gallery-folder {
   text-decoration: none;
