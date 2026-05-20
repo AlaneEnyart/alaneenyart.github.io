@@ -55,7 +55,7 @@ body {
   overflow-x: hidden;
   transition: 0.4s;
   padding-top: 100px;
-  /*box-shadow: 2px 0 20px rgba(0,0,0,0.08);*/
+  box-shadow: 2px 0 20px rgba(0,0,0,0.08);
 }
 
 .sidebar a {
