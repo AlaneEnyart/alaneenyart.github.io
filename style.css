@@ -49,7 +49,7 @@ body {
   z-index: 1000;
   top: 0;
   left: 0;
-  background: white;
+  background: #f4efe8;
   overflow-x: hidden;
   transition: 0.4s;
   padding-top: 100px;
