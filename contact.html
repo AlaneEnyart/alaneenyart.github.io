@@ -35,8 +35,15 @@
 <footer>© 2026 Alane Art</footer>
 
 <script>
-function openMenu(){document.getElementById("sidebar").style.width="260px";}
-function closeMenu(){document.getElementById("sidebar").style.width="0";}
+function openMenu() {
+  document.getElementById("sidebar").style.width = "260px";
+  document.getElementById("overlay").style.display = "block";
+}
+
+function closeMenu() {
+  document.getElementById("sidebar").style.width = "0";
+  document.getElementById("overlay").style.display = "none";
+}
 </script>
 
 </body>
