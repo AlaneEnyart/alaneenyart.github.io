@@ -1,0 +1,292 @@
+[
+  {
+    "id": "10",
+    "title": "aqua_breeze",
+    "height": 36,
+    "width": 36,
+    "dominantColor": "mixed",
+    "brightness": 0.91,
+    "textureDensity": 0.19,
+    "visualWeight": 0.58
+  },
+  {
+    "id": "11",
+    "title": "celestial",
+    "height": 48,
+    "width": 48,
+    "dominantColor": "gray",
+    "brightness": 0.88,
+    "textureDensity": 0.2,
+    "visualWeight": 0.58
+  },
+  {
+    "id": "12",
+    "title": "floribunda",
+    "height": 30,
+    "width": 40,
+    "dominantColor": "yellow",
+    "brightness": 0.56,
+    "textureDensity": 0.19,
+    "visualWeight": 0.41
+  },
+  {
+    "id": "13",
+    "title": "hummingbirds_are_here",
+    "height": 36,
+    "width": 72,
+    "dominantColor": "yellow",
+    "brightness": 0.55,
+    "textureDensity": 0.16,
+    "visualWeight": 0.39
+  },
+  {
+    "id": "14",
+    "title": "birth_of_kindness",
+    "height": 30,
+    "width": 40,
+    "dominantColor": "yellow",
+    "brightness": 0.59,
+    "textureDensity": 0.17,
+    "visualWeight": 0.41
+  },
+  {
+    "id": "15",
+    "title": "moonlight",
+    "height": 36,
+    "width": 48,
+    "dominantColor": "yellow",
+    "brightness": 0.74,
+    "textureDensity": 0.36,
+    "visualWeight": 0.62
+  },
+  {
+    "id": "16",
+    "title": "royal _poinciana",
+    "height": 24,
+    "width": 48,
+    "dominantColor": "red",
+    "brightness": 0.5,
+    "textureDensity": 0.2,
+    "visualWeight": 0.39
+  },
+  {
+    "id": "17",
+    "title": "oh_what_a_night",
+    "height": 48,
+    "width": 48,
+    "dominantColor": "yellow",
+    "brightness": 0.83,
+    "textureDensity": 0.2,
+    "visualWeight": 0.56
+  },
+  {
+    "id": "18",
+    "title": "the_message",
+    "height": 48,
+    "width": 30,
+    "dominantColor": "yellow",
+    "brightness": 0.79,
+    "textureDensity": 0.2,
+    "visualWeight": 0.54
+  },
+  {
+    "id": "19",
+    "title": "dusk",
+    "height": 36,
+    "width": 48,
+    "dominantColor": "yellow",
+    "brightness": 0.79,
+    "textureDensity": 0.1,
+    "visualWeight": 0.47
+  },
+  {
+    "id": "1",
+    "title": "frosty_spring",
+    "height": 48,
+    "width": 48,
+    "dominantColor": "yellow",
+    "brightness": 0.78,
+    "textureDensity": 0.05,
+    "visualWeight": 0.42
+  },
+  {
+    "id": "20",
+    "title": "solitary",
+    "height": 36,
+    "width": 36,
+    "dominantColor": "yellow",
+    "brightness": 0.88,
+    "textureDensity": 0.22,
+    "visualWeight": 0.6
+  },
+  {
+    "id": "21",
+    "title": "mmmmm",
+    "height": 36,
+    "width": 36,
+    "dominantColor": "green",
+    "brightness": 0.84,
+    "textureDensity": 0.2,
+    "visualWeight": 0.56
+  },
+  {
+    "id": "22",
+    "title": "gulf_romance_dance_5",
+    "height": 48,
+    "width": 60,
+    "dominantColor": "blue",
+    "brightness": 0.65,
+    "textureDensity": 0.2,
+    "visualWeight": 0.47
+  },
+  {
+    "id": "23",
+    "title": "spring_forward",
+    "height": 48,
+    "width": 48,
+    "dominantColor": "yellow",
+    "brightness": 0.87,
+    "textureDensity": 0.2,
+    "visualWeight": 0.58
+  },
+  {
+    "id": "24",
+    "title": "spring _forward_2",
+    "height": 36,
+    "width": 36,
+    "dominantColor": "green",
+    "brightness": 0.77,
+    "textureDensity": 0.25,
+    "visualWeight": 0.56
+  },
+  {
+    "id": "25",
+    "title": "summer_rain",
+    "height": 48,
+    "width": 48,
+    "dominantColor": "mixed",
+    "brightness": 0.85,
+    "textureDensity": 0.2,
+    "visualWeight": 0.56
+  },
+  {
+    "id": "26",
+    "title": "gulf_romance_dance_7",
+    "height": 48,
+    "width": 60,
+    "dominantColor": "blue",
+    "brightness": 0.8,
+    "textureDensity": 0.28,
+    "visualWeight": 0.6
+  },
+  {
+    "id": "27",
+    "title": "gulf_romance_dance_6",
+    "height": 48,
+    "width": 60,
+    "dominantColor": "blue",
+    "brightness": 0.83,
+    "textureDensity": 0.26,
+    "visualWeight": 0.6
+  },
+  {
+    "id": "28",
+    "title": "after_the_storm",
+    "height": 36,
+    "width": 48,
+    "dominantColor": "yellow",
+    "brightness": 0.78,
+    "textureDensity": 0.21,
+    "visualWeight": 0.54
+  },
+  {
+    "id": "29",
+    "title": "spring_stream_reizin",
+    "height": 30,
+    "width": 40,
+    "dominantColor": "gray",
+    "brightness": 0.55,
+    "textureDensity": 0.24,
+    "visualWeight": 0.44
+  },
+  {
+    "id": "2",
+    "title": "sand_dollar_red",
+    "height": 36,
+    "width": 36,
+    "dominantColor": "yellow",
+    "brightness": 0.72,
+    "textureDensity": 0.15,
+    "visualWeight": 0.46
+  },
+  {
+    "id": "3",
+    "title": "remember_galaxy",
+    "height": 40,
+    "width": 30,
+    "dominantColor": "green",
+    "brightness": 0.71,
+    "textureDensity": 0.09,
+    "visualWeight": 0.42
+  },
+  {
+    "id": "4",
+    "title": "sand_dollar_blue",
+    "height": 36,
+    "width": 36,
+    "dominantColor": "blue",
+    "brightness": 0.68,
+    "textureDensity": 0.2,
+    "visualWeight": 0.48
+  },
+  {
+    "id": "5",
+    "title": "aurora_borealis",
+    "height": 30,
+    "width": 48,
+    "dominantColor": "green",
+    "brightness": 0.44,
+    "textureDensity": 0.22,
+    "visualWeight": 0.37
+  },
+  {
+    "id": "6",
+    "title": "pensive_morning",
+    "height": 48,
+    "width": 48,
+    "dominantColor": "green",
+    "brightness": 0.9,
+    "textureDensity": 0.16,
+    "visualWeight": 0.56
+  },
+  {
+    "id": "7",
+    "title": "autumn_fall_flower_framed)",
+    "height": 30,
+    "width": 40,
+    "dominantColor": "yellow",
+    "brightness": 0.72,
+    "textureDensity": 0.25,
+    "visualWeight": 0.54
+  },
+  {
+    "id": "8",
+    "title": "desert_peace",
+    "height": 24,
+    "width": 30,
+    "dominantColor": "yellow",
+    "brightness": 0.62,
+    "textureDensity": 0.26,
+    "visualWeight": 0.49
+  },
+  {
+    "id": "9",
+    "title": "sealife",
+    "height": 30,
+    "width": 48,
+    "dominantColor": "gray",
+    "brightness": 0.47,
+    "textureDensity": 0.25,
+    "visualWeight": 0.41
+  }
+]
