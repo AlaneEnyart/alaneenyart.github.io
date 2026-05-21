@@ -263,8 +263,13 @@ async function loadGallery(){
             // IMAGE NAME
             //////////////////////////////////////////////////
 
-            const fileName =
-                `${p.id}_${p.title}_${p.height}_${p.width}.jpg`;
+            const cleanTitle = p.title
+                  .trim()
+                  .replace(/\s+/g, '_')
+                  .replace(/[()]/g,'');
+
+           const fileName =
+           `${p.id}_${cleanTitle}_${p.height}_${p.width}.JPG`;
 
             div.innerHTML = `
 
