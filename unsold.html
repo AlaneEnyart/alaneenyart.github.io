@@ -431,7 +431,7 @@ function prettyTitle(str) {
 function imgPath(p) {
   // unsold.html lives in Gallery/ → go up one level to reach images/IMG/
   // filename pattern: title with underscores replaced by spaces, e.g. "moonlight.jpg"
-  return `${p.title}.jpg`;
+  return `images/IMG/${p.id}_${p.title}_${p.height}_${p.width}.jpg`;
 }
 
 function renderGallery() {
