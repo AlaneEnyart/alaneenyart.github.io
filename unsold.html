@@ -432,7 +432,7 @@ function imgPath(p) {
   // unsold.html lives in Gallery/ → go up one level to reach images/IMG/
   // filename pattern: title with underscores replaced by spaces, e.g. "moonlight.jpg"
   const name = p.title.replace(/_/g, ' ');
-  return `../images/IMG/${name}.jpg`;
+  return `images/IMG/${name}.jpg`;
 }
 
 function renderGallery() {
