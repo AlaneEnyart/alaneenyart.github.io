@@ -455,9 +455,12 @@ function renderGallery() {
     const rowEl = document.createElement('div');
     rowEl.className = 'ed-row';
 
+    // Normalize all panels in row to same height (tallest wins)
+    const rowH = Math.max(...row.map(p => p.h));
     row.forEach((p, pi) => {
-      const dispW  = p.w;
-      const dispH  = p.h;
+      const dispScale = rowH / p.h;
+      const dispW  = Math.round(p.w * dispScale);
+      const dispH  = rowH;
 
       const panel = document.createElement('div');
       panel.className = 'ed-panel' + (p.visualWeight > 0.55 ? ' accent-border' : '');
@@ -520,7 +523,6 @@ function openGallery() {
 </script>
 </body>
 </html>
-
 
 <!-- <!DOCTYPE html>
 <html lang="en">
