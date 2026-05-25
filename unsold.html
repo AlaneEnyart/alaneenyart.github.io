@@ -336,13 +336,26 @@ function harmonyScore(p1, p2) {
 //  harmonious unplaced neighbour next.
 // ─────────────────────────────────────────────────────────
 function buildHarmonicOrder(list) {
+  // These 6 always appear first, in this exact order
+  const topTitles = [
+    'summer_rain',
+    'pensive_morning',
+    'gulf_romance_dance_6',
+    'gulf_romance_dance_7',
+    'gulf_romance_dance_5',
+    'celestial'
+  ];
+  const top = [];
   const remaining = [...list];
-  const ordered = [];
+  topTitles.forEach(t => {
+    const idx = remaining.findIndex(p => p.title === t);
+    if (idx !== -1) top.push(remaining.splice(idx, 1)[0]);
+  });
 
-  // Seed: most visually heavy (anchor)
+  // Harmonic greedy order for the rest
   remaining.sort((a,b) => b.visualWeight - a.visualWeight);
-  ordered.push(remaining.shift());
-
+  const ordered = [...top];
+  if (remaining.length) ordered.push(remaining.shift());
   while (remaining.length) {
     const last = ordered[ordered.length - 1];
     let best = null, bestScore = Infinity, bestIdx = -1;
