@@ -380,50 +380,27 @@ const CONTAINER_W = 1200; // px — editorial container width
 const GAP = 18;
 
 function buildRows(ordered) {
+  // Pure global scale — no row stretching, sizes stay proportional to real inches
   const sized = ordered.map(p => ({ ...p, ...scalePainting(p) }));
   const rows = [];
   let remaining = [...sized];
 
-  const rowTargets = [1.0, 0.75, 0.90, 0.65, 1.0, 0.80, 0.70, 0.95, 0.60, 1.0];
-  let rowIdx = 0;
-
   while (remaining.length > 0) {
-    const targetRatio = rowTargets[rowIdx % rowTargets.length];
-    const targetW = Math.round(CONTAINER_W * targetRatio);
-    rowIdx++;
-
-    // Find the best combination of paintings that fills this row
-    // Strategy: greedily pick from remaining, but if we come up short
-    // scale all items in the row up to exactly fill the target width
     let rowItems = [];
     let usedW = 0;
 
     while (remaining.length > 0) {
       const next = remaining[0];
       const newW = usedW + next.w + (rowItems.length > 0 ? GAP : 0);
-      if (rowItems.length > 0 && newW > targetW + 80) break;
+      if (rowItems.length > 0 && newW > CONTAINER_W) break;
       rowItems.push(remaining.shift());
       usedW = newW;
     }
 
-    // Avoid orphan: pull last lonely item into this row
+    // Avoid single orphan on last row — pull it into previous
     if (remaining.length === 1 && rowItems.length < 5) {
       rowItems.push(remaining.shift());
-      usedW += rowItems[rowItems.length-1].w + GAP;
     }
-
-    // Scale all items in row proportionally so they fill targetW exactly
-    // (preserves aspect ratios and relative sizes within the row)
-    const totalGaps = GAP * (rowItems.length - 1);
-    const availW = targetW - totalGaps;
-    const currentW = rowItems.reduce((s, p) => s + p.w, 0);
-    const rowScale = availW / currentW;
-
-    rowItems = rowItems.map(p => ({
-      ...p,
-      w: Math.round(p.w * rowScale),
-      h: Math.round(p.h * rowScale)
-    }));
 
     rows.push(rowItems);
   }
