@@ -238,6 +238,135 @@
       color: var(--gold);
       text-decoration: none;
     }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(28,26,23,0.96);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    #lightbox.open { display: flex; }
+
+    #lightbox-close {
+      position: absolute;
+      top: 22px; right: 30px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+
+    #lightbox-img {
+      max-width: 80vw;
+      max-height: 70vh;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    #lightbox-info {
+      margin-top: 24px;
+      text-align: center;
+      color: #fff;
+    }
+    #lightbox-info .lb-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.06em;
+    }
+    #lightbox-info .lb-dims {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 6px;
+    }
+    #lightbox-info .lb-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--gold);
+      margin-top: 8px;
+    }
+    #lightbox-info .lb-interiors {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #fff;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Jost', sans-serif;
+    }
+    #lightbox-info .lb-interiors:hover { opacity: 1; }
+
+    /* ── INTERIORS OVERLAY ── */
+    #interiors-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(28,26,23,0.97);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 30px 30px;
+    }
+    #interiors-overlay.open { display: flex; }
+
+    #interiors-close {
+      position: absolute;
+      top: 22px; right: 30px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    #interiors-close:hover { opacity: 1; }
+
+    #interiors-title {
+      position: absolute;
+      top: 22px; left: 30px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+
+    #interiors-img {
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body>
@@ -252,6 +381,607 @@
 
 <!-- ══════════════ GALLERY ══════════════ -->
 <div id="gallery-screen">
+  <header class="gallery-header">
+    <h1>Available <em>Paintings</em></h1>
+    <span class="painting-count" id="count-label"></span>
+  </header>
+
+  <div id="editorial"></div>
+
+  <footer class="gallery-footer">
+    <a href="index.html">← Return to site</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    All works © Alane Enyart
+  </footer>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────
+//  DATA  (from paintings.json — embedded for self-contained use;
+//         you can also fetch it dynamically if you prefer)
+// ─────────────────────────────────────────────────────────
+const paintings = [
+  { id:"10", title:"aqua_breeze",              height:36, width:36, dominantColor:"mixed",  brightness:0.91, textureDensity:0.19, visualWeight:0.58 },
+  { id:"11", title:"celestial",                height:48, width:48, dominantColor:"gray",   brightness:0.88, textureDensity:0.20, visualWeight:0.58 },
+  { id:"12", title:"floribunda",               height:30, width:40, dominantColor:"yellow", brightness:0.56, textureDensity:0.19, visualWeight:0.41 },
+  { id:"13", title:"hummingbirds_are_here",    height:36, width:72, dominantColor:"yellow", brightness:0.55, textureDensity:0.16, visualWeight:0.39 },
+  { id:"14", title:"birth_of_kindness",        height:30, width:40, dominantColor:"yellow", brightness:0.59, textureDensity:0.17, visualWeight:0.41 },
+  { id:"15", title:"moonlight",                height:36, width:48, dominantColor:"yellow", brightness:0.74, textureDensity:0.36, visualWeight:0.62 },
+  { id:"16", title:"royal_poinciana",          height:24, width:48, dominantColor:"red",    brightness:0.50, textureDensity:0.20, visualWeight:0.39 },
+  { id:"17", title:"oh_what_a_night",          height:48, width:48, dominantColor:"yellow", brightness:0.83, textureDensity:0.20, visualWeight:0.56 },
+  { id:"18", title:"the_message",              height:48, width:30, dominantColor:"yellow", brightness:0.79, textureDensity:0.20, visualWeight:0.54 },
+  { id:"1",  title:"frosty_spring",            height:48, width:48, dominantColor:"yellow", brightness:0.78, textureDensity:0.05, visualWeight:0.42 },
+  { id:"20", title:"solitary",                 height:36, width:36, dominantColor:"yellow", brightness:0.88, textureDensity:0.22, visualWeight:0.60 },
+  { id:"21", title:"mmmmm",                    height:36, width:36, dominantColor:"green",  brightness:0.84, textureDensity:0.20, visualWeight:0.56 },
+  { id:"22", title:"gulf_romance_dance_5",     height:48, width:60, dominantColor:"blue",   brightness:0.65, textureDensity:0.20, visualWeight:0.47 },
+  { id:"23", title:"spring_forward",           height:48, width:48, dominantColor:"yellow", brightness:0.87, textureDensity:0.20, visualWeight:0.58 },
+  { id:"24", title:"spring_forward_2",         height:36, width:36, dominantColor:"green",  brightness:0.77, textureDensity:0.25, visualWeight:0.56 },
+  { id:"25", title:"summer_rain",              height:48, width:48, dominantColor:"mixed",  brightness:0.85, textureDensity:0.20, visualWeight:0.56 },
+  { id:"26", title:"gulf_romance_dance_7",     height:48, width:60, dominantColor:"blue",   brightness:0.80, textureDensity:0.28, visualWeight:0.60 },
+  { id:"27", title:"gulf_romance_dance_6",     height:48, width:60, dominantColor:"blue",   brightness:0.83, textureDensity:0.26, visualWeight:0.60 },
+  { id:"28", title:"after_the_storm",          height:36, width:48, dominantColor:"yellow", brightness:0.78, textureDensity:0.21, visualWeight:0.54 },
+  { id:"29", title:"spring_stream_resin",     height:30, width:40, dominantColor:"gray",   brightness:0.55, textureDensity:0.24, visualWeight:0.44 },
+  { id:"2",  title:"sand_dollar_coral",          height:36, width:36, dominantColor:"yellow", brightness:0.72, textureDensity:0.15, visualWeight:0.46 },
+  { id:"3",  title:"galaxy",          height:40, width:30, dominantColor:"green",  brightness:0.71, textureDensity:0.09, visualWeight:0.42 },
+  { id:"4",  title:"sand_dollar_blue",         height:36, width:36, dominantColor:"blue",   brightness:0.68, textureDensity:0.20, visualWeight:0.48 },
+  { id:"5",  title:"aurora_borealis",          height:30, width:48, dominantColor:"green",  brightness:0.44, textureDensity:0.22, visualWeight:0.37 },
+  { id:"6",  title:"pensive_morning",          height:48, width:48, dominantColor:"green",  brightness:0.90, textureDensity:0.16, visualWeight:0.56 },
+  { id:"8",  title:"desert_peace",             height:24, width:30, dominantColor:"yellow", brightness:0.62, textureDensity:0.26, visualWeight:0.49 },
+  { id:"9",  title:"sealife",                  height:30, width:48, dominantColor:"gray",   brightness:0.47, textureDensity:0.25, visualWeight:0.41 }
+];
+
+// ─────────────────────────────────────────────────────────
+//  COLOUR HARMONY HELPERS
+// ─────────────────────────────────────────────────────────
+const colorGroups = {
+  blue:   ['blue'],
+  warm:   ['yellow','red'],
+  nature: ['green','mixed'],
+  neutral:['gray','mixed']
+};
+
+function colorDistance(a, b) {
+  // Same group → 0, adjacent → 1, opposite → 2
+  const aGroup = Object.keys(colorGroups).find(g => colorGroups[g].includes(a)) || 'neutral';
+  const bGroup = Object.keys(colorGroups).find(g => colorGroups[g].includes(b)) || 'neutral';
+  if (aGroup === bGroup) return 0;
+  const opposites = [['blue','warm'],['nature','neutral']];
+  if (opposites.some(p => p.includes(aGroup) && p.includes(bGroup))) return 2;
+  return 1;
+}
+
+function harmonyScore(p1, p2) {
+  // Lower score = better neighbours
+  const cd  = colorDistance(p1.dominantColor, p2.dominantColor);
+  const vwd = Math.abs(p1.visualWeight - p2.visualWeight);
+  const td  = Math.abs(p1.textureDensity - p2.textureDensity);
+  const bd  = Math.abs(p1.brightness - p2.brightness);
+  return cd * 1.4 + vwd * 0.8 + td * 0.6 + bd * 0.4;
+}
+
+// ─────────────────────────────────────────────────────────
+//  GREEDY HARMONIC ORDERING
+//  Start with the heaviest painting; always pick the most
+//  harmonious unplaced neighbour next.
+// ─────────────────────────────────────────────────────────
+function buildHarmonicOrder(list) {
+  // These 6 always appear first, in this exact order
+  const topTitles = [
+    'summer_rain',
+    'pensive_morning',
+    'gulf_romance_dance_6',
+    'gulf_romance_dance_7',
+    'gulf_romance_dance_5',
+    'celestial'
+  ];
+  const top = [];
+  const remaining = [...list];
+  topTitles.forEach(t => {
+    const idx = remaining.findIndex(p => p.title === t);
+    if (idx !== -1) top.push(remaining.splice(idx, 1)[0]);
+  });
+
+  // Harmonic greedy order for the rest
+  remaining.sort((a,b) => b.visualWeight - a.visualWeight);
+  const ordered = [...top];
+  if (remaining.length) ordered.push(remaining.shift());
+  while (remaining.length) {
+    const last = ordered[ordered.length - 1];
+    let best = null, bestScore = Infinity, bestIdx = -1;
+    remaining.forEach((p, i) => {
+      const s = harmonyScore(last, p);
+      if (s < bestScore) { bestScore = s; best = p; bestIdx = i; }
+    });
+    ordered.push(best);
+    remaining.splice(bestIdx, 1);
+  }
+  return ordered;
+}
+
+// ─────────────────────────────────────────────────────────
+//  PROPORTIONAL PIXEL SCALE
+//  Real inches → display pixels, keeping max dimension = BASE_MAX
+// ─────────────────────────────────────────────────────────
+// 1 real inch = PX_PER_INCH pixels — same for EVERY painting
+// so a 48" canvas is always visually larger than a 24" one
+const PX_PER_INCH = 5.5;
+
+function scalePainting(p) {
+  return {
+    w: Math.round(p.width  * PX_PER_INCH),
+    h: Math.round(p.height * PX_PER_INCH)
+  };
+}
+
+// ─────────────────────────────────────────────────────────
+//  EDITORIAL ROW BUILDER
+//  Pack paintings into rows whose total width ≈ CONTAINER_W.
+//  Each row target width is loosened for editorial variety.
+// ─────────────────────────────────────────────────────────
+const CONTAINER_W = 1200; // px — editorial container width
+const GAP = 18;
+
+function buildRows(ordered) {
+  // Pure global scale — no row stretching, sizes stay proportional to real inches
+  const sized = ordered.map(p => ({ ...p, ...scalePainting(p) }));
+  const rows = [];
+  let remaining = [...sized];
+
+  while (remaining.length > 0) {
+    let rowItems = [];
+    let usedW = 0;
+
+    while (remaining.length > 0) {
+      const next = remaining[0];
+      const newW = usedW + next.w + (rowItems.length > 0 ? GAP : 0);
+      if (rowItems.length > 0 && newW > CONTAINER_W) break;
+      rowItems.push(remaining.shift());
+      usedW = newW;
+    }
+
+    // Avoid single orphan on last row — pull it into previous
+    if (remaining.length === 1 && rowItems.length < 5) {
+      rowItems.push(remaining.shift());
+    }
+
+    rows.push(rowItems);
+  }
+
+  return rows;
+}
+
+// ─────────────────────────────────────────────────────────
+//  RENDER
+// ─────────────────────────────────────────────────────────
+function prettyTitle(str) {
+  return str.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function imgPath(p) {
+  const ts = '?v=' + Date.now();
+  return `images/IMG/${p.id}_${p.title}_${p.height}_${p.width}.jpg${ts}`;
+}
+
+function renderGallery() {
+  const ordered = buildHarmonicOrder(paintings);
+  const rows    = buildRows(ordered);
+
+  const container = document.getElementById('editorial');
+  document.getElementById('count-label').textContent = `${paintings.length} works`;
+
+  rows.forEach((row, ri) => {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'ed-row';
+
+    row.forEach((p, pi) => {
+      const dispW  = p.w;
+      const dispH  = p.h;
+
+      const panel = document.createElement('div');
+      panel.className = 'ed-panel' + (p.visualWeight > 0.55 ? ' accent-border' : '');
+      panel.style.width  = dispW + 'px';
+      panel.style.height = dispH + 'px';
+      // stagger delay
+      panel.style.transitionDelay = `${ri * 0.05 + pi * 0.04}s`;
+
+      const img = document.createElement('img');
+      img.alt = prettyTitle(p.title);
+      img.loading = 'lazy';
+      img.src = imgPath(p);
+      img.onload = () => img.classList.add('loaded');
+
+      const skel = document.createElement('div');
+      skel.className = 'skeleton';
+
+      const cap = document.createElement('div');
+      cap.className = 'ed-caption';
+      cap.innerHTML = `
+        <div class="title">${prettyTitle(p.title)}</div>
+        <div class="dims">${p.width}" × ${p.height}"</div>
+      `;
+
+      panel._painting = p;
+      panel.addEventListener('click', () => openLightbox(panel._painting));
+      panel.appendChild(img);
+      panel.appendChild(skel);
+      panel.appendChild(cap);
+      rowEl.appendChild(panel);
+    });
+
+    container.appendChild(rowEl);
+  });
+
+  // Intersection Observer for staggered reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.ed-panel').forEach(el => observer.observe(el));
+}
+
+// ─────────────────────────────────────────────────────────
+//  OPEN / CLOSE
+// ─────────────────────────────────────────────────────────
+function openGallery() {
+  document.getElementById('landing').classList.add('hidden');
+  const gs = document.getElementById('gallery-screen');
+  gs.classList.add('visible');
+  // Render on first open
+  if (!gs.dataset.rendered) {
+    renderGallery();
+    gs.dataset.rendered = '1';
+  }
+}
+
+
+// ─────────────────────────────────────────────────────────
+//  PAINTING METADATA  (price, interiors grid image)
+// ─────────────────────────────────────────────────────────
+const paintingMeta = {
+  'gulf_romance_dance_7': {
+    price: '$2,300',
+    interiors: 'images/INTERIORS/grid_Gulf_Romance_Dance_7.png'
+  }
+  // add more here as: 'title': { price: '$X,XXX', interiors: 'images/INTERIORS/grid_Title.png' }
+};
+
+// ─────────────────────────────────────────────────────────
+//  LIGHTBOX
+// ─────────────────────────────────────────────────────────
+function openLightbox(p) {
+  document.getElementById('lightbox-img').src   = imgPath(p);
+  document.getElementById('lightbox-img').alt   = prettyTitle(p.title);
+  document.getElementById('lb-title').textContent = prettyTitle(p.title);
+  document.getElementById('lb-dims').textContent  = p.width + '\u2033 \u00d7 ' + p.height + '\u2033';
+
+  const meta = paintingMeta[p.title];
+  document.getElementById('lb-price').textContent = meta ? meta.price : '';
+
+  const intBtn = document.getElementById('lb-interiors-btn');
+  if (meta && meta.interiors) {
+    intBtn.style.display = 'inline-block';
+    intBtn._src   = meta.interiors;
+    intBtn._title = prettyTitle(p.title);
+  } else {
+    intBtn.style.display = 'none';
+  }
+
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openInteriors() {
+  const btn = document.getElementById('lb-interiors-btn');
+  document.getElementById('interiors-img').src = btn._src;
+  document.getElementById('interiors-title').textContent = btn._title;
+  document.getElementById('interiors-overlay').classList.add('open');
+}
+
+function closeInteriors() {
+  document.getElementById('interiors-overlay').classList.remove('open');
+}
+
+// Close lightbox on background click
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.getElementById('interiors-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeInteriors();
+});
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeInteriors(); closeLightbox(); }
+});
+</script>
+
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕ Close</button>
+  <img id="lightbox-img" src="" alt="" />
+  <div id="lightbox-info">
+    <div class="lb-title" id="lb-title"></div>
+    <div class="lb-dims" id="lb-dims"></div>
+    <div class="lb-price" id="lb-price"></div>
+    <button class="lb-interiors" id="lb-interiors-btn" onclick="openInteriors()" style="display:none">
+      Interiors
+    </button>
+  </div>
+</div>
+
+<!-- ── INTERIORS OVERLAY ── -->
+<div id="interiors-overlay">
+  <div id="interiors-title"></div>
+  <button id="interiors-close" onclick="closeInteriors()">✕ Close</button>
+  <img id="interiors-img" src="" alt="Interior views" />
+</div>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Available Paintings — Alane Enyart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #f5f0e8;
+      --ink:     #1c1a17;
+      --gold:    #b8975a;
+      --muted:   #8a8070;
+      --gap:     18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    /* ── LANDING SCREEN ── */
+    #landing {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      z-index: 100;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+    #landing.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .landing-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 2.4rem;
+      text-align: center;
+    }
+    .landing-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .btn-available {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--ink);
+      border: none;
+      padding: 1rem 3rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .btn-available::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .btn-available:hover::after { transform: scaleX(1); }
+    .btn-available span { position: relative; z-index: 1; }
+
+    /* ── GALLERY SCREEN ── */
+    #gallery-screen {
+      opacity: 0;
+      transition: opacity 0.8s ease 0.3s;
+      padding-bottom: 80px;
+    }
+    #gallery-screen.visible { opacity: 1; }
+
+    /* ── HEADER ── */
+    .gallery-header {
+      padding: 60px 60px 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      border-bottom: 1px solid rgba(28,26,23,0.12);
+      margin-bottom: 52px;
+    }
+    .gallery-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .gallery-header h1 em { font-style: italic; color: var(--gold); }
+    .painting-count {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── EDITORIAL LAYOUT ── */
+    #editorial {
+      padding: 0 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* A "row" is a flex container that holds panels */
+    .ed-row {
+      display: flex;
+      gap: var(--gap);
+      margin-bottom: var(--gap);
+      align-items: flex-start;
+    }
+
+    /* Each panel = one painting */
+    .ed-panel {
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .ed-panel img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .ed-panel:hover img { transform: scale(1.04); }
+
+    /* Caption overlay */
+    .ed-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 18px 16px;
+      background: linear-gradient(to top, rgba(28,26,23,0.72) 0%, transparent 100%);
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      color: #fff;
+    }
+    .ed-panel:hover .ed-caption { transform: translateY(0); }
+    .ed-caption .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+    .ed-caption .dims {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 3px;
+    }
+
+    /* Gold accent border — appears on heavy-weight paintings */
+    .ed-panel.accent-border::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--gold);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .ed-panel.accent-border:hover::after { opacity: 1; }
+
+    /* Loading skeleton */
+    .ed-panel .skeleton {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #e8e2d6 25%, #ede8de 50%, #e8e2d6 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .ed-panel img.loaded + .skeleton,
+    .ed-panel img.loaded ~ .skeleton { display: none; }
+
+    /* Stagger fade-in */
+    .ed-panel {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease,
+                  /* keep hover transitions too */
+                  box-shadow 0.3s;
+    }
+    .ed-panel.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Subtle drop shadow on hover */
+    .ed-panel:hover { box-shadow: 0 12px 40px rgba(28,26,23,0.18); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #editorial { padding: 0 16px; }
+      .gallery-header { padding: 36px 16px 10px; }
+      .ed-row { flex-wrap: wrap; }
+      .ed-panel { min-width: 140px !important; }
+    }
+
+    /* ── FOOTER ── */
+    .gallery-footer {
+      text-align: center;
+      padding: 48px 0 24px;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .gallery-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ LANDING ══════════════ -->
+<!--<div id="landing">
+  <p class="landing-title">Alane Enyart<br><em>Original Paintings</em></p>
+  <button class="btn-available" onclick="openGallery()">
+    <span>Available</span>
+  </button>
+</div>
+
+<!-- ══════════════ GALLERY ══════════════ -->
+<!--<div id="gallery-screen">
   <header class="gallery-header">
     <h1>Available <em>Paintings</em></h1>
     <span class="painting-count" id="count-label"></span>
@@ -509,3 +1239,4 @@ function openGallery() {
 </script>
 </body>
 </html>
+-->
