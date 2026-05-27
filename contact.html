@@ -1,5 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alane Art | Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    .contact-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    .contact-wrapper h2 {
+      font-family: 'Jost', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .contact-intro {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.97rem;
+      color: #3a3530;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .contact-intro span {
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+    }
+
+    .contact-form .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-form label {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #3a3530;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-form label .required {
+      color: #cc2200;
+      font-size: 1rem;
+      margin-left: 2px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1px solid #d0ccc8;
+      border-radius: 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #2c2c2c;
+      background: #fff;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #c8a97a;
+    }
+
+    .contact-form textarea {
+      border-radius: 12px;
+      height: 130px;
+      resize: vertical;
+    }
+
+    .contact-form .submit-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: #5a5a5a;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .contact-form .submit-btn:hover {
+      background: #3a3530;
+    }
+
+    .required-note {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      color: #7a7a7a;
+      margin-top: 1rem;
+    }
+
+    .required-note span {
+      color: #cc2200;
+      font-size: 1rem;
+    }
+
+    .success-msg {
+      display: none;
+      background: #f0f7f0;
+      border: 1px solid #a0c8a0;
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      color: #2a5a2a;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="menu-button" onclick="openMenu()">
+  <span></span><span></span><span></span>
+</div>
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+</div>
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+<section class="content-section">
+  <div class="contact-wrapper">
+    <h2>Contact Me</h2>
+    <p class="contact-intro">
+      Thank you for visiting my website. You are important to me.
+      Please fill out the form and I will get back to you shortly! &nbsp;<span>— Alane</span>
+    </p>
+
+    <!-- Formspree form — replace YOUR_FORM_ID after you sign up -->
+    <form
+      class="contact-form"
+      action="https://formspree.io/f/mojbyjjn"
+      method="POST"
+      id="contactForm"
+    >
+      <div class="form-group">
+        <label for="name">Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message <span class="required">*</span></label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <!-- Hidden field so you know where it came from -->
+      <input type="hidden" name="_subject" value="New message from Alane Art website" />
+      <input type="hidden" name="_replyto" value="" />
+
+      <button type="submit" class="submit-btn">Submit</button>
+
+      <div class="success-msg" id="successMsg">
+        ✓ Thank you! Your message has been sent. Alane will be in touch soon.
+      </div>
+    </form>
+
+    <p class="required-note"><span>*</span> = required</p>
+  </div>
+</section>
+
+<footer>© 2026 Alane Art</footer>
+
+<script>
+function openMenu() {
+  document.getElementById("sidebar").style.width = "180px";
+  document.getElementById("overlay").style.display = "block";
+}
+function closeMenu() {
+  document.getElementById("sidebar").style.width = "0";
+  document.getElementById("overlay").style.display = "none";
+}
+
+// Show success message after submit (Formspree redirects by default,
+// but this handles AJAX submission for a smoother experience)
+const form = document.getElementById("contactForm");
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const data = new FormData(form);
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: { "Accept": "application/json" }
+  });
+  if (response.ok) {
+    form.reset();
+    document.getElementById("successMsg").style.display = "block";
+  } else {
+    alert("Oops! Something went wrong. Please try again or email artistpaintingacryl@gmail.com directly.");
+  }
+});
+</script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -46,5 +271,8 @@ function closeMenu() {
 }
 </script>
 
+
+
 </body>
 </html>
+-->
