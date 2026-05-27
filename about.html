@@ -1,5 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alane EnyArt | About</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    .about-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .about-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2c2c2c;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-header blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: #7a6a5a;
+      border-left: 2px solid #c8a97a;
+      padding-left: 1.2rem;
+      margin: 0 auto;
+      max-width: 580px;
+      text-align: left;
+      line-height: 1.7;
+    }
+
+    .about-header blockquote cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      color: #a08060;
+    }
+
+    .about-artist {
+      display: flex;
+      gap: 2.8rem;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-artist img {
+      width: 260px;
+      min-width: 260px;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      object-fit: cover;
+    }
+
+    .about-artist-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 1.02rem;
+      color: #3a3530;
+      line-height: 1.85;
+    }
+
+    .about-artist-text p {
+      margin-bottom: 1.1rem;
+    }
+
+    .about-artist-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-artist-text .highlight {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.13rem;
+      font-style: italic;
+      color: #7a6a5a;
+    }
+
+    .about-artist-text a {
+      color: #c8a97a;
+      text-decoration: none;
+      border-bottom: 1px solid #c8a97a55;
+      transition: border-color 0.2s;
+    }
+
+    .about-artist-text a:hover {
+      border-color: #c8a97a;
+    }
+
+    .award-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f5ede0 0%, #ecdfd0 100%);
+      border: 1px solid #c8a97a;
+      border-radius: 3px;
+      padding: 0.7rem 1.2rem;
+      margin: 0.6rem 0 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      color: #7a5a30;
+    }
+
+    .award-badge strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #5a3a10;
+      margin-bottom: 0.15rem;
+    }
+
+    @media (max-width: 640px) {
+      .about-artist {
+        flex-direction: column;
+        align-items: center;
+      }
+      .about-artist img {
+        width: 100%;
+        min-width: unset;
+        max-width: 320px;
+      }
+      .about-header h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="menu-button" onclick="openMenu()">
+  <span></span><span></span><span></span>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+<section class="content-section">
+  <div class="about-wrapper">
+
+    <div class="about-header">
+      <h1>Alane EnyArt</h1>
+      <blockquote>
+        "I've been absolutely terrified every moment of my life — and I've never let it keep me from a single thing that I wanted to do."
+        <cite>— Georgia O'Keeffe</cite>
+      </blockquote>
+    </div>
+
+    <div class="about-artist">
+      <img src="images/artist.png" alt="Alane EnyArt, artist" />
+
+      <div class="about-artist-text">
+        <p class="highlight">
+          My paintings emerge from layered acrylic motion — shifting textures and accidental forms that suggest leaves, water, and imagined botanical structures.
+        </p>
+
+        <p>
+          What makes my work truly unique: I use <strong>no brushes or tools of any kind</strong>. Each piece is created on loose canvas by pouring paint in layers, building depth and a living quality that no brush could achieve. When complete, every work is gallery wrapped and ready to hang.
+        </p>
+
+        <p>
+          My greatest inspiration is the breathtaking beauty of the Gulf of Mexico — its luminous skies, ever-shifting water, and the way light transforms everything it touches.
+        </p>
+
+        <div class="award-badge">
+          <strong>🏆 Second Place — Alliance of the Arts, Fort Myers</strong>
+          All Florida Show, 2024 · "Hibiscus Blooming" · Nearly 700 entries
+        </div>
+
+        <p>
+          My goal with every piece is to give its owner something deeply personal — a creation that reflects their own love of life and the world around them.
+        </p>
+
+        <p>
+          My art business has been designated a <strong>"Trusted Art Seller"</strong> with <a href="http://www.artstorefronts.org/" target="_blank">The Art Storefronts Organization</a> — so you can shop with complete confidence, knowing I stand fully behind the quality and value of every piece I create.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>© 2026 Alane Art</footer>
+
+<script>
+function openMenu() {
+  document.getElementById("sidebar").style.width = "180px";
+  document.getElementById("overlay").style.display = "block";
+}
+function closeMenu() {
+  document.getElementById("sidebar").style.width = "0";
+  document.getElementById("overlay").style.display = "none";
+}
+</script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -50,3 +265,4 @@ function closeMenu() {
 
 </body>
 </html>
+-->
