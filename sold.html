@@ -225,6 +225,68 @@
     .lb-arrow:hover { opacity: 1; }
     #lb-prev { left: 16px; }
     #lb-next { right: 16px; }
+
+    /* ── LANDING ── */
+#landing {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  z-index: 100;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+#landing.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.landing-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 2.4rem;
+  text-align: center;
+  line-height: 1.3;
+}
+.landing-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.btn-sold {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--ink);
+  border: none;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.btn-sold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.btn-sold:hover::after { transform: scaleX(1); }
+.btn-sold span { position: relative; z-index: 1; }
+
+/* gallery screen hidden until button clicked */
+#gallery-screen {
+  opacity: 0;
+  transition: opacity 0.8s ease 0.3s;
+}
+#gallery-screen.visible { opacity: 1; }
+       
   </style>
 </head>
 <body>
@@ -399,6 +461,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
+  <!-- ══════════════ LANDING ══════════════ -->
+<div id="landing">
+  <p class="landing-title">Alane Enyart<br><em>Original Paintings</em></p>
+  <button class="btn-sold" onclick="openGallery()">
+    <span>Sold</span>
+  </button>
+</div>
 </html>
 <!--
 <!DOCTYPE html>
