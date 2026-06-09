@@ -1,85 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alane Art | Gallery</title>
-
   <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-choice-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+    }
+    .gallery-choice-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 52px;
+      color: #1c1a17;
+    }
+    .gallery-choice-grid {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .gallery-folder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      text-decoration: none;
+      color: #1c1a17;
+      transition: transform 0.35s ease, opacity 0.3s ease;
+    }
+    .gallery-folder:hover {
+      transform: translateY(-6px);
+      opacity: 0.92;
+    }
+    .gallery-folder img {
+      display: block;
+      width: 420px;
+      height: 420px;
+      object-fit: cover;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.13);
+    }
+    .gallery-folder .folder-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.12em;
+      color: #b8975a;
+    }
+    @media (max-width: 960px) {
+      .gallery-folder img {
+        width: 340px;
+        height: 340px;
+      }
+    }
+    @media (max-width: 720px) {
+      .gallery-folder img {
+        width: 80vw;
+        height: 80vw;
+      }
+      .gallery-choice-grid {
+        gap: 48px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
 <!-- MENU BUTTON -->
-
 <div class="menu-button" onclick="openMenu()">
   <span></span>
   <span></span>
   <span></span>
 </div>
-
 <!-- SIDEBAR -->
-
 <div id="sidebar" class="sidebar">
-
   <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
-
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="gallery.html">Gallery</a>
   <a href="contact.html">Contact</a>
-
 </div>
 <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
 <!-- GALLERY CHOICE -->
-
 <section class="gallery-choice-section">
-
   <h2>Gallery</h2>
-
   <div class="gallery-choice-grid">
 
-    <!-- SOLD -->
-
-    <a href="sold.html" class="gallery-folder sold">
-
-      <img src="images/sold.jpg" alt="Sold paintings">
-
-      
+    <!-- UNSOLD — left -->
+    <a href="unsold.html" class="gallery-folder">
+      <img src="images/unsold.jpg" alt="Available paintings" />
+      <span class="folder-label">Available</span>
     </a>
 
-    <!-- UNSOLD -->
-
-    <a href="unsold.html" class="gallery-folder unsold">
-
-      <img src="images/unsold.jpg" alt="Available paintings">
-
-      
+    <!-- SOLD — right -->
+    <a href="sold.html" class="gallery-folder">
+      <img src="images/sold.jpg" alt="Sold paintings" />
+      <span class="folder-label">Sold</span>
     </a>
 
   </div>
-
 </section>
 
-<footer>
-  © 2026 Alane Art
-</footer>
+<footer>© 2026 Alane Art</footer>
 
 <script>
-
 function openMenu() {
   document.getElementById("sidebar").style.width = "180px";
   document.getElementById("overlay").style.display = "block";
 }
-
 function closeMenu() {
   document.getElementById("sidebar").style.width = "0";
   document.getElementById("overlay").style.display = "none";
 }
-
 </script>
-
 </body>
 </html>
